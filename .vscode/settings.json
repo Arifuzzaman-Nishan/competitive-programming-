@@ -4,5 +4,8 @@
     //     "cpp": "cd $dirWithoutTrailingSlash && g++ -std=c++11 $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt"
     // }
     "code-runner.terminalRoot": "/",
+    "files.associations": {
+        "iostream": "cpp"
+    },
     
 }

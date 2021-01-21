@@ -132,6 +132,39 @@ void faltu( T arg, const hello &... rest) {
 
 void solve()
 {
+    testcase
+    {
+        int n,d;
+        cin >> n >> d;
+        int arr[n+5];
+
+        int cnt = 0;
+
+        for(int i = 0 ; i < n ; i++)
+        {
+            cin >> arr[i];
+            if(arr[i] > d)
+            {
+                cnt++;
+            }
+        }
+
+        if(cnt)
+        {
+            sort(arr,arr+n);
+
+            int sum = arr[0]+arr[1];
+
+            if(sum <= d)cout << "YES" << nl;
+            else cout << "NO" << nl;
+        }
+        else cout << "YES" << nl;
+
+
+
+
+    }
+
   
 }
 
