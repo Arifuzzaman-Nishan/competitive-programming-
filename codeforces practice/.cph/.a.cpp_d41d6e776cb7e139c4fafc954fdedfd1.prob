@@ -1,0 +1,1 @@
+{"name":"Local: a","url":"e:\\competetive programming\\codeforces practice\\a.cpp","tests":[{"id":1611761886302,"input":"5\n1\n4041\n4042\n8081\n8079","output":"NO\nYES\nYES\nYES\nNO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\competetive programming\\codeforces practice\\a.cpp","group":"local","local":true}

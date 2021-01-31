@@ -5,8 +5,7 @@
     // }
     "code-runner.terminalRoot": "/",
     "files.associations": {
-        "iostream": "cpp",
-        "iosfwd": "cpp"
+        "iostream": "cpp"
     },
     
 }
