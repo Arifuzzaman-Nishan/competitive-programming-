@@ -122,103 +122,45 @@ void faltu( T arg, const hello &... rest) {
                 faltu(rest...);
 }
 /***********************************Debugger Code End******************************************************/
+                           
 
 
 
 
-int const Max = 1e5 + 125;
-bitset<Max>isprime;
-vector<int>prime;
 
-void seive_prime_gen(int n)
-{
-    for(int i = 3 ; i <= n ; i += 2)
-    {
-        isprime[i] = 1;
-    }
-
-    int sq = sqrt(n);
-
-    for(int i = 3 ; i <= sq ; i += 2)
-    {
-        if(isprime[i] == 1)
-        {
-            for(int j = i*i ; j <= n ; j += (i+i))
-            {
-                isprime[j] = 0;
-            }
-        }
-    }
-
-    prime.pb(2);
-
-    for(int i = 3 ; i <= n ; i += 2)
-    {
-        if(isprime[i] == 1)
-        {
-            prime.pb(i);
-        }
-    }
-
-}
-
-
-
-
-vector<long long> factorize (long long n)
-{
-    vector<long long> ret;
-    for ( auto p : prime ) {
-        if ( 1LL * p * p > n ) break;
-
-        if ( n % p == 0 ) {
-            while ( n % p == 0 ) {
-                ret.push_back (p);
-                n /= p;
-            }
-        }
-    }
-
-    if ( n > 1 ) ret.push_back(n);
-
-    return ret;
-}
 
 
 void solve()
 {
-    seive_prime_gen(1e5);
-
-    int n;
-    while (cin >> n && n != 0)
+    testcase
     {
-        int temp = n;
-        if(n < 0)
-        {
-            temp *= -1;
-        }
-       vector<ll>primeFact = factorize(temp);
+        int n;
+        cin >> n;
+        string str;
+        cin >> str;
 
-        cout << n << " = ";
-        if(n < 0)
+        string tmp = str;
+        int f = 0 ;
+        string check = "2020";
+
+        for(int i = 0 ; i < str.length() ; i++)
         {
-            cout << "-1";
-            for(auto u : primeFact){
-                cout << " x " << u;
+            if(f == 1)break;
+
+            for(int j = 0 ; j < str.length() ; j++)
+            {
+
+                 tmp.erase(tmp.begin()+i , tmp.begin()+j);
+
+                 if(tmp == check){
+                     f = 1;
+                     break;
+                 }
             }
-            cout << nl;
         }
-        else 
-        {
-           cout << primeFact[0];
-           for(int i = 1 ; i < primeFact.size() ; i++)
-           {
-               cout << " x " << primeFact[i];
-           }
-           cout << nl;
-        }
-    }
-    
+        if(f == 1)cout << "YES" << nl;
+        else cout << "NO" << nl;
+    }    
 
   
 }

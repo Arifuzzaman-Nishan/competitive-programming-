@@ -1,7 +1,7 @@
 /******************************************************************************
                              بسم الله الرحمن الرحيم
                          In the name of ALLAH
-                     Author: Arifuzzaman Nishan
+                     Author: Arifuzzaman nishan
                              DIUCSE53
 *******************************************************************************/
 
@@ -122,103 +122,40 @@ void faltu( T arg, const hello &... rest) {
                 faltu(rest...);
 }
 /***********************************Debugger Code End******************************************************/
+                           
+int arr[1005];
 
-
-
-
-int const Max = 1e5 + 125;
-bitset<Max>isprime;
-vector<int>prime;
-
-void seive_prime_gen(int n)
+int diff(int i , int j)
 {
-    for(int i = 3 ; i <= n ; i += 2)
-    {
-        isprime[i] = 1;
-    }
-
-    int sq = sqrt(n);
-
-    for(int i = 3 ; i <= sq ; i += 2)
-    {
-        if(isprime[i] == 1)
-        {
-            for(int j = i*i ; j <= n ; j += (i+i))
-            {
-                isprime[j] = 0;
-            }
-        }
-    }
-
-    prime.pb(2);
-
-    for(int i = 3 ; i <= n ; i += 2)
-    {
-        if(isprime[i] == 1)
-        {
-            prime.pb(i);
-        }
-    }
-
+    return min(abs(arr[i] - arr[j]), 24 - abs(arr[i]-arr[j]));
+    
 }
 
 
 
-
-vector<long long> factorize (long long n)
-{
-    vector<long long> ret;
-    for ( auto p : prime ) {
-        if ( 1LL * p * p > n ) break;
-
-        if ( n % p == 0 ) {
-            while ( n % p == 0 ) {
-                ret.push_back (p);
-                n /= p;
-            }
-        }
-    }
-
-    if ( n > 1 ) ret.push_back(n);
-
-    return ret;
-}
 
 
 void solve()
 {
-    seive_prime_gen(1e5);
-
     int n;
-    while (cin >> n && n != 0)
+    while(cin >> n)
     {
-        int temp = n;
-        if(n < 0)
+        for(int i = 0 ; i < n ; i++)
         {
-            temp *= -1;
+            cin >> arr[i];
         }
-       vector<ll>primeFact = factorize(temp);
 
-        cout << n << " = ";
-        if(n < 0)
-        {
-            cout << "-1";
-            for(auto u : primeFact){
-                cout << " x " << u;
-            }
-            cout << nl;
-        }
-        else 
-        {
-           cout << primeFact[0];
-           for(int i = 1 ; i < primeFact.size() ; i++)
-           {
-               cout << " x " << primeFact[i];
-           }
-           cout << nl;
-        }
+       sort(arr, arr + n);
+		int sum1 = 0, sum2 = 0;
+		
+		for (int i = 0; i < n - 1; i += 2)
+			sum1 += diff(i, i + 1);
+		
+		for (int i = 1; i < n - 2; i += 2)
+			sum2 += diff(i, i + 1);
+		sum2 += diff(0, n - 1);
+		cout << min(sum1,sum2) << nl;
     }
-    
 
   
 }

@@ -1,0 +1,1 @@
+{"name":"Banks","group":"Virtual Judge - UVALive","url":"https://vjudge.net/problem/UVALive-6855","interactive":false,"memoryLimit":1024,"timeLimit":3000,"tests":[],"testType":"single","input":{"type":"stdin"},"output":{"type":"stdout"},"languages":{"java":{"mainClass":"Main","taskClass":"Banks"}},"srcPath":"e:\\competetive programming\\uva\\Banks.cpp"}

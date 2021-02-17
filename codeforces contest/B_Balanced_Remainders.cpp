@@ -122,103 +122,67 @@ void faltu( T arg, const hello &... rest) {
                 faltu(rest...);
 }
 /***********************************Debugger Code End******************************************************/
+                           
 
 
 
 
-int const Max = 1e5 + 125;
-bitset<Max>isprime;
-vector<int>prime;
 
-void seive_prime_gen(int n)
-{
-    for(int i = 3 ; i <= n ; i += 2)
-    {
-        isprime[i] = 1;
-    }
-
-    int sq = sqrt(n);
-
-    for(int i = 3 ; i <= sq ; i += 2)
-    {
-        if(isprime[i] == 1)
-        {
-            for(int j = i*i ; j <= n ; j += (i+i))
-            {
-                isprime[j] = 0;
-            }
-        }
-    }
-
-    prime.pb(2);
-
-    for(int i = 3 ; i <= n ; i += 2)
-    {
-        if(isprime[i] == 1)
-        {
-            prime.pb(i);
-        }
-    }
-
-}
-
-
-
-
-vector<long long> factorize (long long n)
-{
-    vector<long long> ret;
-    for ( auto p : prime ) {
-        if ( 1LL * p * p > n ) break;
-
-        if ( n % p == 0 ) {
-            while ( n % p == 0 ) {
-                ret.push_back (p);
-                n /= p;
-            }
-        }
-    }
-
-    if ( n > 1 ) ret.push_back(n);
-
-    return ret;
-}
 
 
 void solve()
 {
-    seive_prime_gen(1e5);
-
-    int n;
-    while (cin >> n && n != 0)
+    testcase
     {
-        int temp = n;
-        if(n < 0)
-        {
-            temp *= -1;
-        }
-       vector<ll>primeFact = factorize(temp);
+        int n;
+        cin >> n;
+        vi v(n);
 
-        cout << n << " = ";
-        if(n < 0)
+        for(auto &u : v)
         {
-            cout << "-1";
-            for(auto u : primeFact){
-                cout << " x " << u;
+            cin >> u;
+        }
+
+        int c0 = 0,c1 = 0,c2 = 0;
+
+        for(auto u : v)
+        {
+            if(u % 3 == 0)c0++;
+            else if(u % 3 == 1)c1++;
+            else if(u % 3 == 2)c2++;    
+        }
+
+        int val = n/3;
+
+        // if(c0 == val && c1 == val && c2 == val){cout}
+
+        int cnt = 0;
+
+        while (true)
+        {
+            if(c2 > val)
+            {
+                c0++;
+                c2--;
+                cnt++;
             }
-            cout << nl;
+            else if(c0 > val)
+            {
+                c1++;
+                c0--;
+                cnt++;
+            }
+            else if(c1 > val)
+            {
+                c2++;
+                c1--;
+                cnt++;
+            }
+            if(c0 == val && c1 == val && c2 == val)break;
         }
-        else 
-        {
-           cout << primeFact[0];
-           for(int i = 1 ; i < primeFact.size() ; i++)
-           {
-               cout << " x " << primeFact[i];
-           }
-           cout << nl;
-        }
+        cout << cnt << nl;
+        
     }
-    
 
   
 }

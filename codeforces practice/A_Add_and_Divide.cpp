@@ -122,103 +122,44 @@ void faltu( T arg, const hello &... rest) {
                 faltu(rest...);
 }
 /***********************************Debugger Code End******************************************************/
+                           
 
 
 
 
-int const Max = 1e5 + 125;
-bitset<Max>isprime;
-vector<int>prime;
 
-void seive_prime_gen(int n)
-{
-    for(int i = 3 ; i <= n ; i += 2)
-    {
-        isprime[i] = 1;
-    }
-
-    int sq = sqrt(n);
-
-    for(int i = 3 ; i <= sq ; i += 2)
-    {
-        if(isprime[i] == 1)
-        {
-            for(int j = i*i ; j <= n ; j += (i+i))
-            {
-                isprime[j] = 0;
-            }
-        }
-    }
-
-    prime.pb(2);
-
-    for(int i = 3 ; i <= n ; i += 2)
-    {
-        if(isprime[i] == 1)
-        {
-            prime.pb(i);
-        }
-    }
-
-}
-
-
-
-
-vector<long long> factorize (long long n)
-{
-    vector<long long> ret;
-    for ( auto p : prime ) {
-        if ( 1LL * p * p > n ) break;
-
-        if ( n % p == 0 ) {
-            while ( n % p == 0 ) {
-                ret.push_back (p);
-                n /= p;
-            }
-        }
-    }
-
-    if ( n > 1 ) ret.push_back(n);
-
-    return ret;
-}
 
 
 void solve()
 {
-    seive_prime_gen(1e5);
-
-    int n;
-    while (cin >> n && n != 0)
+    testcase
     {
-        int temp = n;
-        if(n < 0)
-        {
-            temp *= -1;
-        }
-       vector<ll>primeFact = factorize(temp);
+        int a , b;
+        cin >> a >> b;
 
-        cout << n << " = ";
-        if(n < 0)
+        int ans = 100;
+
+        for(int i = 0 ; i < 32 ; i++)
         {
-            cout << "-1";
-            for(auto u : primeFact){
-                cout << " x " << u;
+            int x = (b+i);
+            int tmp = a;
+            int cnt = i;
+
+            if(x == 1)
+            {
+                continue;
             }
-            cout << nl;
+            
+            while (tmp)
+            {
+                cnt++; 
+                tmp /= x; 
+            }
+            ans = min(ans,cnt);
         }
-        else 
-        {
-           cout << primeFact[0];
-           for(int i = 1 ; i < primeFact.size() ; i++)
-           {
-               cout << " x " << primeFact[i];
-           }
-           cout << nl;
-        }
+        cout << ans << nl;
+        
     }
-    
 
   
 }

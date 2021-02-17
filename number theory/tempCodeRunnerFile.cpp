@@ -1,0 +1,1 @@
+ // memset(isprime, 1, sizeof isprime);
